@@ -27,7 +27,7 @@ if __name__ == '__main__':
 
     optimizer = optim.RMSprop(net.parameters(), lr=0.01, weight_decay=0.0001)
 
-    for epoch in range(2): #
+    for epoch in range(5): #
 
         running_loss = 0.0
         for i,batch in enumerate(trainloader,0):
