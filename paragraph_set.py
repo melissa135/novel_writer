@@ -26,7 +26,7 @@ def read_files(folder):
                     c = c.replace('</p>','')
 		    c = c.decode('utf8')
 		    if len(c) >= 20:
-                        content.append(c.decode('utf8'))
+                        content.append(c)
 
     return content
 
