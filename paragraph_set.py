@@ -25,12 +25,12 @@ def read_files(folder):
                     c = c.replace('<p>','')
                     c = c.replace('</p>','')
 		    c = c.decode('utf8')
-		    if len(c) >= 20:
+		    if len(c) >= 20: # drop paragraphs which are too short
                         content.append(c)
 
     return content
 
-def word_to_index(content):
+def word_to_index(content): # map a word into a index for one-hot model
     
     word_index = {}
 
