@@ -1,3 +1,9 @@
+'''
+Modified from pytorch/torch/utils/data/dataloader.py 
+Only changed the function default_collate()
+The original default_collate() puts each data field into a tensor with outer dimension batch size,
+but here default_collate() only puts them into a list.
+'''
 import torch
 import torch.multiprocessing as multiprocessing
 from torch.utils.data.sampler import SequentialSampler, RandomSampler
