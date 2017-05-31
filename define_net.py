@@ -1,4 +1,4 @@
-import torch
+ #import torch
 import torch.nn as nn
 import torch.nn.functional as F
 from torch.autograd import Variable
@@ -16,7 +16,7 @@ class Net(nn.Module):
 
     def forward(self, input, hidden):
         length = input.size()[0]
-        embed = self.embedding(input).view((length, 1, -1))
+        embed = self.embedding(input).view((length, 1, -1)) # the LSTM can olny accept input in mini-batch
         output, hidden = self.lstm(embed, hidden)
         output = F.relu(self.linear(output.view(length, -1)))
         output = self.softmax(output)
