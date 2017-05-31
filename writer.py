@@ -27,6 +27,7 @@ def prob_select(log_probs,regularity): # select a word according to the probabil
 def sample(start,regularity=1.0):
 
     start = start.decode('utf-8')
+    print 'Start with: ',start, ' regularity=', regularity
     in_put = transform_sample(start)
     in_put = Variable(in_put)
     hidden = net.initHidden()
@@ -36,7 +37,7 @@ def sample(start,regularity=1.0):
     
     for i in range(max_length):
 
-        n = prob_select(output.data[0],regularity)
+        n = prob_select(output.data[-1],regularity)
         w = word_index[n]
         
         if w == "<END>":
@@ -67,7 +68,8 @@ if __name__ == '__main__':
     print sample('到了宁府',0.5)
     print sample('到了宁府',1.0)
     print sample('到了宁府',2.0)
+    
+    
     print sample('')
-    print sample('')
-    print sample('')
-
+    print sample('探春笑道')
+    print sample('来了一僧一道，且行且谈。')
