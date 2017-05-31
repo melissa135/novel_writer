@@ -69,7 +69,6 @@ if __name__ == '__main__':
     print sample('到了宁府',1.0)
     print sample('到了宁府',2.0)
     
-    
     print sample('')
     print sample('探春笑道')
     print sample('来了一僧一道，且行且谈。')
