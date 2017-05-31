@@ -8,11 +8,12 @@ from define_net import Net
 from torch.autograd import Variable
 from my_transform import transform_sample
 
-def prob_select(log_probs,regular):
+def prob_select(log_probs,regularity): # select a word according to the probability
     probs = []
     total = 0
     for i in range(0,len(log_probs)):
-        prob = math.pow(10,log_probs[i]*regular)
+        # regular = 0, totally random; regular = 1, standard probability by LogSoftmax; regular > 1, prefer words with high probability
+        prob = math.pow(10,log_probs[i]*regularity)
         probs.append(prob)
         total = total + prob
     r = random.uniform(0,total)
@@ -23,7 +24,7 @@ def prob_select(log_probs,regular):
         summ = summ + probs[i]
     return i
 
-def sample(start,regular=1.0):
+def sample(start,regularity=1.0):
 
     start = start.decode('utf-8')
     in_put = transform_sample(start)
@@ -35,7 +36,7 @@ def sample(start,regular=1.0):
     
     for i in range(max_length):
 
-        n = prob_select(output.data[0],regular)
+        n = prob_select(output.data[0],regularity)
         w = word_index[n]
         
         if w == "<END>":
