@@ -1,4 +1,4 @@
-import os
+ #import os
 import torch.nn as nn
 import torch.nn.init as init
 import torch.optim as optim
@@ -17,7 +17,8 @@ if __name__ == '__main__':
     trainset = Paragraph_set(path_+'/hongloumeng/')
     print trainset.get_paragraph_size()
     print trainset.get_word_size()
-    
+	
+    # the length of samples here are different, so we can't directly use DataLoader provided by PyTorch 
     trainloader = DataLoader(trainset,batch_size=8,shuffle=True,num_workers=2)
 
     net = Net(trainset.get_word_size())
@@ -46,8 +47,8 @@ if __name__ == '__main__':
             optimizer.step()
 
             running_loss += loss.data[0]
-            if i%10 == 9: # step is 10 and batch_size is 8
-                print('[%d, %4d] loss: %.3f' % (epoch+1,i+1,running_loss/80))
+            if i%10 == 9:
+                print('[%d, %4d] loss: %.3f' % (epoch+1,i+1,running_loss/80)) # step is 10 and batch_size is 8
                 running_loss = 0.0
 
     print('Finished Training')
