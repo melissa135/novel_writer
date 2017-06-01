@@ -12,7 +12,7 @@ def prob_select(log_probs,regularity): # select a word according to the probabil
     probs = []
     total = 0
     for i in range(0,len(log_probs)):
-        # regular = 0, totally random; regular = 1, standard probability by LogSoftmax; regular > 1, prefer words with high probability
+        # regularity = 0, totally random; regularity = 1, standard probability by LogSoftmax; regularity > 1, prefer words with high probability
         prob = math.pow(10,log_probs[i]*regularity)
         probs.append(prob)
         total = total + prob
