@@ -1,5 +1,6 @@
 # novel_writer
 Using LSTM to writer novel-like text (HongLouMeng here) in Pytorch.
+Online writer: http://www.predictor.xin/writer/
 
 ## Requirements
 * Pytorch
